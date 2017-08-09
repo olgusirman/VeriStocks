@@ -10,14 +10,39 @@ import UIKit
 
 final class EncryptViewController: UIViewController {
     
+    //MARK: Properties
+    
+    private enum Segue : String {
+        case stocksTitle
+    }
+    
+    fileprivate var isEncryptParsed = false
+    
+    //MARK: UI
+    
     @IBOutlet weak var stocksLandingButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Veripark".localizedUppercase
         
-//        APIManager().getEncrypt()
+        let manager = APIManager()
+        
+        /*
+        manager.getEncrypt { (encrypt) in
+            
+            if !encrypt.isEmpty {
+                self.isEncryptParsed = true
+            }
+            
+        }*/
+        
+        if let encrypt = manager.encrypt, !encrypt.isEmpty  {
+            self.isEncryptParsed = true
+        }
+        
         
     }
 
@@ -30,10 +55,6 @@ final class EncryptViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        enum Segue : String {
-            case stocksTitle
-        }
-        
         if segue.identifier == Segue.stocksTitle.rawValue {
             if let controller = segue.destination as? StocksTitlesViewController {
                 controller.stocksTitle = stocksLandingButton.titleLabel?.text
@@ -44,9 +65,13 @@ final class EncryptViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
-        //TODO: if no encrpyt, no segue!
+        if isEncryptParsed {
+            return true
+        } else {
+            self.alert(title: nil, message: "Devam edebilmeniz için Encrypt data gerekli")
+            return false
+        }
         
-        return true
     }
 
 }

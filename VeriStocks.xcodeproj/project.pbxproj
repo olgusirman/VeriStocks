@@ -25,9 +25,12 @@
 		C93FC51F1F3A4B85004232CA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC51D1F3A4B85004232CA /* APIManager.swift */; };
 		C93FC5211F3A5203004232CA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5201F3A5203004232CA /* Router.swift */; };
 		C93FC5231F3A54C8004232CA /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5221F3A54C8004232CA /* ErrorManager.swift */; };
-		C93FC5261F3A5879004232CA /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5251F3A5879004232CA /* RequestBody.swift */; };
+		C93FC5261F3A5879004232CA /* EncryptRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5251F3A5879004232CA /* EncryptRequestBody.swift */; };
 		C93FC5291F3A62A3004232CA /* Encrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5281F3A62A3004232CA /* Encrypt.swift */; };
 		C94E97171F3A86FC003E2271 /* StocksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94E97161F3A86FC003E2271 /* StocksListViewController.swift */; };
+		C9AA04DD1F3BAA2D004FA53C /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AA04DC1F3BAA2D004FA53C /* AlertHelper.swift */; };
+		C9AA04DF1F3BB2A5004FA53C /* StockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AA04DE1F3BB2A5004FA53C /* StockListCell.swift */; };
+		C9AA04E11F3BC3FE004FA53C /* StockListSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AA04E01F3BC3FE004FA53C /* StockListSectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,9 +78,12 @@
 		C93FC51D1F3A4B85004232CA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C93FC5201F3A5203004232CA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C93FC5221F3A54C8004232CA /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
-		C93FC5251F3A5879004232CA /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
+		C93FC5251F3A5879004232CA /* EncryptRequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptRequestBody.swift; sourceTree = "<group>"; };
 		C93FC5281F3A62A3004232CA /* Encrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypt.swift; sourceTree = "<group>"; };
 		C94E97161F3A86FC003E2271 /* StocksListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksListViewController.swift; sourceTree = "<group>"; };
+		C9AA04DC1F3BAA2D004FA53C /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		C9AA04DE1F3BB2A5004FA53C /* StockListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListCell.swift; sourceTree = "<group>"; };
+		C9AA04E01F3BC3FE004FA53C /* StockListSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListSectionCell.swift; sourceTree = "<group>"; };
 		E23B44DDD2F3B1FD39523DBA /* Pods-VeriStocksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksTests/Pods-VeriStocksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1754186558E30F74FDCAE3F /* Pods-VeriStocksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksUITests/Pods-VeriStocksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,7 +265,8 @@
 		C93FC5241F3A55A3004232CA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C93FC5251F3A5879004232CA /* RequestBody.swift */,
+				C93FC5251F3A5879004232CA /* EncryptRequestBody.swift */,
+				C9AA04DC1F3BAA2D004FA53C /* AlertHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,6 +312,8 @@
 		C94E97141F3A86D6003E2271 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C9AA04DE1F3BB2A5004FA53C /* StockListCell.swift */,
+				C9AA04E01F3BC3FE004FA53C /* StockListSectionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -600,7 +609,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AA04DF1F3BB2A5004FA53C /* StockListCell.swift in Sources */,
+				C9AA04DD1F3BAA2D004FA53C /* AlertHelper.swift in Sources */,
 				C93FC5211F3A5203004232CA /* Router.swift in Sources */,
+				C9AA04E11F3BC3FE004FA53C /* StockListSectionCell.swift in Sources */,
 				C93FC51E1F3A4B85004232CA /* APIManager.swift in Sources */,
 				C93D35A01F3A787400AE00FD /* EncryptViewController.swift in Sources */,
 				C94E97171F3A86FC003E2271 /* StocksListViewController.swift in Sources */,
@@ -611,7 +623,7 @@
 				C93D35A51F3A795000AE00FD /* StocksTitlesViewController.swift in Sources */,
 				C93FC4EF1F3A189F004232CA /* AppDelegate.swift in Sources */,
 				C93FC5231F3A54C8004232CA /* ErrorManager.swift in Sources */,
-				C93FC5261F3A5879004232CA /* RequestBody.swift in Sources */,
+				C93FC5261F3A5879004232CA /* EncryptRequestBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

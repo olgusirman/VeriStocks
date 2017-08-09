@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct RequestBody {
+struct EncryptRequestBody {
     
-    var bodyParameter: String
+    var parameter: String
     
-    init(bodyParameter: String) {
-        self.bodyParameter = bodyParameter
+    init(parameter: String) {
+        self.parameter = parameter
     }
     
     func xmlString() -> String {
@@ -23,7 +23,7 @@ struct RequestBody {
         xml += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
         xml += "<soap:Body>"
         xml += "<Encrypt xmlns=\"http://tempuri.org/\">"
-        xml += "<request>\(bodyParameter)</request>"
+        xml += "<request>\(parameter)</request>"
         xml += "</Encrypt>"
         xml += "</soap:Body>"
         xml += "</soap:Envelope>"

@@ -21,7 +21,7 @@ final class APIManager {
         case encryptKey
     }
     
-    fileprivate var encrypt : String? {
+    var encrypt : String? {
         
         get {
             //TODO: get encrpyt keychain later
@@ -48,7 +48,7 @@ final class APIManager {
     
     //TODO: 1) Encrypt
     
-    func getEncrypt() {
+    func getEncrypt( encryptHandler : @escaping (_ encrypt : String) -> () ) {
         
         //TODO: handle url correctly
         //let url = try! URL(string: Constant.baseUrl.rawValue)?.asURL()
@@ -65,7 +65,7 @@ final class APIManager {
         let reqBodyParameter = "RequestIsValid\(now)"
         debugPrint(reqBodyParameter)
         
-        let bodyStr = RequestBody(bodyParameter: reqBodyParameter).xmlString()
+        let bodyStr = EncryptRequestBody(parameter: reqBodyParameter).xmlString()
         let bodyData = bodyStr.data(using: String.Encoding.utf8, allowLossyConversion: true)
         request.httpBody = bodyData
         
@@ -81,10 +81,15 @@ final class APIManager {
             }
             
             if let data = data {
-                if let stringResponse: String = String(data: data, encoding: String.Encoding.utf8) {
-                    debugPrint(stringResponse)
+                if let xmlResponse: String = String(data: data, encoding: String.Encoding.utf8) {
                     
+                    let encryptParser = EncryptParser(withXML: xmlResponse)
+                    let encrypt = encryptParser.parse()
+                    print(encrypt)
                     
+                    self.encrypt = encrypt
+                    
+                    encryptHandler(encrypt)
                     
                 }
             }

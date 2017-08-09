@@ -30,7 +30,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.78694632740000003" green="1" blue="0.98891364400000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yWe-ZI-a7W" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AIu-Gv-WSw"/>
                             <constraint firstItem="yWe-ZI-a7W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="65" id="LyB-EG-lAz"/>
@@ -116,8 +116,71 @@
                     <view key="view" contentMode="scaleToFill" id="hUm-HN-DN3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.95049788869999996" green="1" blue="0.58787695750000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-pJ-klY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockList" id="KaQ-PH-Dq8" customClass="StockListCell" customModule="VeriStocks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KaQ-PH-Dq8" id="t2n-TZ-869">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Li9-du-Q3r">
+                                                    <rect key="frame" x="33" y="9.5" width="51.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Li9-du-Q3r" firstAttribute="leading" secondItem="t2n-TZ-869" secondAttribute="leadingMargin" constant="25" id="1fg-hz-WKS"/>
+                                                <constraint firstItem="Li9-du-Q3r" firstAttribute="centerY" secondItem="t2n-TZ-869" secondAttribute="centerY" id="G6P-nh-e7s"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="testLabel" destination="Li9-du-Q3r" id="Jx5-Oy-V16"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockListSection" id="9mP-um-dua" customClass="StockListSectionCell" customModule="VeriStocks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9mP-um-dua" id="UXR-gj-3wp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmC-Nx-wJe">
+                                                    <rect key="frame" x="43" y="9.5" width="48" height="24"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zmC-Nx-wJe" firstAttribute="centerY" secondItem="UXR-gj-3wp" secondAttribute="centerY" id="HLX-VL-fL4"/>
+                                                <constraint firstItem="zmC-Nx-wJe" firstAttribute="leading" secondItem="UXR-gj-3wp" secondAttribute="leadingMargin" constant="35" id="SvM-1u-UZY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="testLabelSection" destination="zmC-Nx-wJe" id="W07-QV-V04"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="oAf-3V-N6R" firstAttribute="top" secondItem="OtJ-pJ-klY" secondAttribute="bottom" id="LP1-XX-1fX"/>
+                            <constraint firstItem="OtJ-pJ-klY" firstAttribute="top" secondItem="hUm-HN-DN3" secondAttribute="topMargin" id="bKV-Kt-veQ"/>
+                            <constraint firstItem="OtJ-pJ-klY" firstAttribute="leading" secondItem="hUm-HN-DN3" secondAttribute="leading" id="hzf-eg-ILI"/>
+                            <constraint firstAttribute="trailing" secondItem="OtJ-pJ-klY" secondAttribute="trailing" id="raq-gd-ACy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="OtJ-pJ-klY" id="ukl-hz-wsn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0N-5g-6Tv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
