@@ -1,0 +1,6 @@
+framework module Pods_VeriStocksUITests {
+  umbrella header "Pods-VeriStocksUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

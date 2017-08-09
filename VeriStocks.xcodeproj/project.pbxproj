@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127C43353CFFDCEDFD386967 /* Pods_VeriStocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2CB6966B6DBA97D43961B3 /* Pods_VeriStocks.framework */; };
+		AC63F50CA55F44FD6CEF5818 /* Pods_VeriStocksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E17F86A14643AB2B02C2066 /* Pods_VeriStocksTests.framework */; };
+		BCC4DAF52A514179A4DFC0AB /* Pods_VeriStocksUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89361630804513C9CD7D86E /* Pods_VeriStocksUITests.framework */; };
+		C93D35A01F3A787400AE00FD /* EncryptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D359F1F3A787400AE00FD /* EncryptViewController.swift */; };
+		C93D35A51F3A795000AE00FD /* StocksTitlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D35A41F3A795000AE00FD /* StocksTitlesViewController.swift */; };
+		C93D35A71F3A796400AE00FD /* StocksTitlesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D35A61F3A796400AE00FD /* StocksTitlesCell.swift */; };
+		C93D35AA1F3A7B2F00AE00FD /* StockTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D35A91F3A7B2F00AE00FD /* StockTitle.swift */; };
+		C93D35AD1F3A7CD000AE00FD /* StocksTitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93D35AC1F3A7CD000AE00FD /* StocksTitleManager.swift */; };
 		C93FC4EF1F3A189F004232CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC4EE1F3A189F004232CA /* AppDelegate.swift */; };
-		C93FC4F11F3A189F004232CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC4F01F3A189F004232CA /* ViewController.swift */; };
 		C93FC4F41F3A189F004232CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C93FC4F21F3A189F004232CA /* Main.storyboard */; };
 		C93FC4F61F3A189F004232CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C93FC4F51F3A189F004232CA /* Assets.xcassets */; };
 		C93FC4F91F3A189F004232CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C93FC4F71F3A189F004232CA /* LaunchScreen.storyboard */; };
 		C93FC5041F3A189F004232CA /* VeriStocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5031F3A189F004232CA /* VeriStocksTests.swift */; };
 		C93FC50F1F3A189F004232CA /* VeriStocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC50E1F3A189F004232CA /* VeriStocksUITests.swift */; };
+		C93FC51E1F3A4B85004232CA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC51D1F3A4B85004232CA /* APIManager.swift */; };
+		C93FC51F1F3A4B85004232CA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC51D1F3A4B85004232CA /* APIManager.swift */; };
+		C93FC5211F3A5203004232CA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5201F3A5203004232CA /* Router.swift */; };
+		C93FC5231F3A54C8004232CA /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5221F3A54C8004232CA /* ErrorManager.swift */; };
+		C93FC5261F3A5879004232CA /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5251F3A5879004232CA /* RequestBody.swift */; };
+		C93FC5291F3A62A3004232CA /* Encrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93FC5281F3A62A3004232CA /* Encrypt.swift */; };
+		C94E97171F3A86FC003E2271 /* StocksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94E97161F3A86FC003E2271 /* StocksListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,19 +48,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E17F86A14643AB2B02C2066 /* Pods_VeriStocksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeriStocksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D697C626B2FED245C4A14D7 /* Pods-VeriStocks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocks.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocks/Pods-VeriStocks.release.xcconfig"; sourceTree = "<group>"; };
+		9B172EA0DBBAA9E88E13D677 /* Pods-VeriStocks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocks/Pods-VeriStocks.debug.xcconfig"; sourceTree = "<group>"; };
+		B0E2EA217D886A5D21DD8BBE /* Pods-VeriStocksUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksUITests/Pods-VeriStocksUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BE2CB6966B6DBA97D43961B3 /* Pods_VeriStocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeriStocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C78ADB04D8D0F9AF7D8A415C /* Pods-VeriStocksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksTests/Pods-VeriStocksTests.release.xcconfig"; sourceTree = "<group>"; };
+		C89361630804513C9CD7D86E /* Pods_VeriStocksUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeriStocksUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C93D359F1F3A787400AE00FD /* EncryptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptViewController.swift; sourceTree = "<group>"; };
+		C93D35A41F3A795000AE00FD /* StocksTitlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksTitlesViewController.swift; sourceTree = "<group>"; };
+		C93D35A61F3A796400AE00FD /* StocksTitlesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksTitlesCell.swift; sourceTree = "<group>"; };
+		C93D35A91F3A7B2F00AE00FD /* StockTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockTitle.swift; sourceTree = "<group>"; };
+		C93D35AC1F3A7CD000AE00FD /* StocksTitleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksTitleManager.swift; sourceTree = "<group>"; };
 		C93FC4EB1F3A189F004232CA /* VeriStocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeriStocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C93FC4EE1F3A189F004232CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C93FC4F01F3A189F004232CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C93FC4EE1F3A189F004232CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		C93FC4F31F3A189F004232CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C93FC4F51F3A189F004232CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C93FC4F51F3A189F004232CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		C93FC4F81F3A189F004232CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C93FC4FA1F3A189F004232CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C93FC4FA1F3A189F004232CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		C93FC4FF1F3A189F004232CA /* VeriStocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeriStocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C93FC5031F3A189F004232CA /* VeriStocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeriStocksTests.swift; sourceTree = "<group>"; };
 		C93FC5051F3A189F004232CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C93FC50A1F3A189F004232CA /* VeriStocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeriStocksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C93FC50E1F3A189F004232CA /* VeriStocksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeriStocksUITests.swift; sourceTree = "<group>"; };
 		C93FC5101F3A189F004232CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C93FC51D1F3A4B85004232CA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		C93FC5201F3A5203004232CA /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C93FC5221F3A54C8004232CA /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		C93FC5251F3A5879004232CA /* RequestBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
+		C93FC5281F3A62A3004232CA /* Encrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypt.swift; sourceTree = "<group>"; };
+		C94E97161F3A86FC003E2271 /* StocksListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksListViewController.swift; sourceTree = "<group>"; };
+		E23B44DDD2F3B1FD39523DBA /* Pods-VeriStocksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksTests/Pods-VeriStocksTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F1754186558E30F74FDCAE3F /* Pods-VeriStocksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksUITests/Pods-VeriStocksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127C43353CFFDCEDFD386967 /* Pods_VeriStocks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC63F50CA55F44FD6CEF5818 /* Pods_VeriStocksTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +103,95 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC4DAF52A514179A4DFC0AB /* Pods_VeriStocksUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38132FEE323CB015AF6CD851 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9B172EA0DBBAA9E88E13D677 /* Pods-VeriStocks.debug.xcconfig */,
+				6D697C626B2FED245C4A14D7 /* Pods-VeriStocks.release.xcconfig */,
+				E23B44DDD2F3B1FD39523DBA /* Pods-VeriStocksTests.debug.xcconfig */,
+				C78ADB04D8D0F9AF7D8A415C /* Pods-VeriStocksTests.release.xcconfig */,
+				F1754186558E30F74FDCAE3F /* Pods-VeriStocksUITests.debug.xcconfig */,
+				B0E2EA217D886A5D21DD8BBE /* Pods-VeriStocksUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B24F91BD7443A00810E30561 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE2CB6966B6DBA97D43961B3 /* Pods_VeriStocks.framework */,
+				2E17F86A14643AB2B02C2066 /* Pods_VeriStocksTests.framework */,
+				C89361630804513C9CD7D86E /* Pods_VeriStocksUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C93D359D1F3A783B00AE00FD /* Encrypt */ = {
+			isa = PBXGroup;
+			children = (
+				C93D359E1F3A784700AE00FD /* Controller */,
+			);
+			path = Encrypt;
+			sourceTree = "<group>";
+		};
+		C93D359E1F3A784700AE00FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C93D359F1F3A787400AE00FD /* EncryptViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C93D35A11F3A793700AE00FD /* StocksTitles */ = {
+			isa = PBXGroup;
+			children = (
+				C93D35AB1F3A7B8700AE00FD /* Manager */,
+				C93D35A81F3A7B1700AE00FD /* Model */,
+				C93D35A31F3A794300AE00FD /* Cell */,
+				C93D35A21F3A793E00AE00FD /* Controller */,
+			);
+			path = StocksTitles;
+			sourceTree = "<group>";
+		};
+		C93D35A21F3A793E00AE00FD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C93D35A41F3A795000AE00FD /* StocksTitlesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C93D35A31F3A794300AE00FD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C93D35A61F3A796400AE00FD /* StocksTitlesCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C93D35A81F3A7B1700AE00FD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C93D35A91F3A7B2F00AE00FD /* StockTitle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C93D35AB1F3A7B8700AE00FD /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C93D35AC1F3A7CD000AE00FD /* StocksTitleManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		C93FC4E21F3A189F004232CA = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +199,8 @@
 				C93FC5021F3A189F004232CA /* VeriStocksTests */,
 				C93FC50D1F3A189F004232CA /* VeriStocksUITests */,
 				C93FC4EC1F3A189F004232CA /* Products */,
+				38132FEE323CB015AF6CD851 /* Pods */,
+				B24F91BD7443A00810E30561 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +217,13 @@
 		C93FC4ED1F3A189F004232CA /* VeriStocks */ = {
 			isa = PBXGroup;
 			children = (
-				C93FC4EE1F3A189F004232CA /* AppDelegate.swift */,
-				C93FC4F01F3A189F004232CA /* ViewController.swift */,
-				C93FC4F21F3A189F004232CA /* Main.storyboard */,
-				C93FC4F51F3A189F004232CA /* Assets.xcassets */,
-				C93FC4F71F3A189F004232CA /* LaunchScreen.storyboard */,
-				C93FC4FA1F3A189F004232CA /* Info.plist */,
+				C94E97121F3A86C6003E2271 /* StocksList */,
+				C93D35A11F3A793700AE00FD /* StocksTitles */,
+				C93D359D1F3A783B00AE00FD /* Encrypt */,
+				C93FC52A1F3A7678004232CA /* Sources */,
+				C93FC5271F3A6257004232CA /* Models */,
+				C93FC5241F3A55A3004232CA /* Helpers */,
+				C93FC51C1F3A49E5004232CA /* APIManager */,
 			);
 			path = VeriStocks;
 			sourceTree = "<group>";
@@ -125,6 +246,76 @@
 			path = VeriStocksUITests;
 			sourceTree = "<group>";
 		};
+		C93FC51C1F3A49E5004232CA /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				C93FC51D1F3A4B85004232CA /* APIManager.swift */,
+				C93FC5201F3A5203004232CA /* Router.swift */,
+				C93FC5221F3A54C8004232CA /* ErrorManager.swift */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		C93FC5241F3A55A3004232CA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C93FC5251F3A5879004232CA /* RequestBody.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C93FC5271F3A6257004232CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C93FC5281F3A62A3004232CA /* Encrypt.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C93FC52A1F3A7678004232CA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C93FC4EE1F3A189F004232CA /* AppDelegate.swift */,
+				C93FC4FA1F3A189F004232CA /* Info.plist */,
+				C93FC4F71F3A189F004232CA /* LaunchScreen.storyboard */,
+				C93FC4F51F3A189F004232CA /* Assets.xcassets */,
+				C93FC4F21F3A189F004232CA /* Main.storyboard */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C94E97121F3A86C6003E2271 /* StocksList */ = {
+			isa = PBXGroup;
+			children = (
+				C94E97151F3A86DD003E2271 /* Manager */,
+				C94E97141F3A86D6003E2271 /* Cell */,
+				C94E97131F3A86CD003E2271 /* Controller */,
+			);
+			path = StocksList;
+			sourceTree = "<group>";
+		};
+		C94E97131F3A86CD003E2271 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C94E97161F3A86FC003E2271 /* StocksListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C94E97141F3A86D6003E2271 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C94E97151F3A86DD003E2271 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +323,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C93FC5131F3A189F004232CA /* Build configuration list for PBXNativeTarget "VeriStocks" */;
 			buildPhases = (
+				DBA4E8C7CCBB51C66E2681FB /* [CP] Check Pods Manifest.lock */,
 				C93FC4E71F3A189F004232CA /* Sources */,
 				C93FC4E81F3A189F004232CA /* Frameworks */,
 				C93FC4E91F3A189F004232CA /* Resources */,
+				EAB831159232FFF7FD60D75A /* [CP] Embed Pods Frameworks */,
+				DE3D0F66966503F4A4F3F65C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C93FC5161F3A189F004232CA /* Build configuration list for PBXNativeTarget "VeriStocksTests" */;
 			buildPhases = (
+				654A8BE4EDCDEA47DA2F5F70 /* [CP] Check Pods Manifest.lock */,
 				C93FC4FB1F3A189F004232CA /* Sources */,
 				C93FC4FC1F3A189F004232CA /* Frameworks */,
 				C93FC4FD1F3A189F004232CA /* Resources */,
+				2E755E985E57D0868FF2EBF4 /* [CP] Embed Pods Frameworks */,
+				0051A52D41CE586BEA6F14F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +364,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C93FC5191F3A189F004232CA /* Build configuration list for PBXNativeTarget "VeriStocksUITests" */;
 			buildPhases = (
+				11543249FC5048F5021CF382 /* [CP] Check Pods Manifest.lock */,
 				C93FC5061F3A189F004232CA /* Sources */,
 				C93FC5071F3A189F004232CA /* Frameworks */,
 				C93FC5081F3A189F004232CA /* Resources */,
+				AC7D9F69A56ECFDBA8116911 /* [CP] Embed Pods Frameworks */,
+				08D75AF7D55954861557E497 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,13 +457,161 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0051A52D41CE586BEA6F14F0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeriStocksTests/Pods-VeriStocksTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		08D75AF7D55954861557E497 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeriStocksUITests/Pods-VeriStocksUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		11543249FC5048F5021CF382 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2E755E985E57D0868FF2EBF4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeriStocksTests/Pods-VeriStocksTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		654A8BE4EDCDEA47DA2F5F70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AC7D9F69A56ECFDBA8116911 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeriStocksUITests/Pods-VeriStocksUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBA4E8C7CCBB51C66E2681FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE3D0F66966503F4A4F3F65C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeriStocks/Pods-VeriStocks-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAB831159232FFF7FD60D75A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeriStocks/Pods-VeriStocks-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C93FC4E71F3A189F004232CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C93FC4F11F3A189F004232CA /* ViewController.swift in Sources */,
+				C93FC5211F3A5203004232CA /* Router.swift in Sources */,
+				C93FC51E1F3A4B85004232CA /* APIManager.swift in Sources */,
+				C93D35A01F3A787400AE00FD /* EncryptViewController.swift in Sources */,
+				C94E97171F3A86FC003E2271 /* StocksListViewController.swift in Sources */,
+				C93D35AA1F3A7B2F00AE00FD /* StockTitle.swift in Sources */,
+				C93FC5291F3A62A3004232CA /* Encrypt.swift in Sources */,
+				C93D35A71F3A796400AE00FD /* StocksTitlesCell.swift in Sources */,
+				C93D35AD1F3A7CD000AE00FD /* StocksTitleManager.swift in Sources */,
+				C93D35A51F3A795000AE00FD /* StocksTitlesViewController.swift in Sources */,
 				C93FC4EF1F3A189F004232CA /* AppDelegate.swift in Sources */,
+				C93FC5231F3A54C8004232CA /* ErrorManager.swift in Sources */,
+				C93FC5261F3A5879004232CA /* RequestBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93FC51F1F3A4B85004232CA /* APIManager.swift in Sources */,
 				C93FC5041F3A189F004232CA /* VeriStocksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +654,7 @@
 				C93FC4F31F3A189F004232CA /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C93FC4F71F3A189F004232CA /* LaunchScreen.storyboard */ = {
@@ -313,6 +663,7 @@
 				C93FC4F81F3A189F004232CA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -415,6 +766,7 @@
 		};
 		C93FC5141F3A189F004232CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B172EA0DBBAA9E88E13D677 /* Pods-VeriStocks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WX5MNWGK6X;
@@ -428,6 +780,7 @@
 		};
 		C93FC5151F3A189F004232CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D697C626B2FED245C4A14D7 /* Pods-VeriStocks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WX5MNWGK6X;
@@ -441,6 +794,7 @@
 		};
 		C93FC5171F3A189F004232CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E23B44DDD2F3B1FD39523DBA /* Pods-VeriStocksTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -456,6 +810,7 @@
 		};
 		C93FC5181F3A189F004232CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C78ADB04D8D0F9AF7D8A415C /* Pods-VeriStocksTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -471,6 +826,7 @@
 		};
 		C93FC51A1F3A189F004232CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1754186558E30F74FDCAE3F /* Pods-VeriStocksUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = WX5MNWGK6X;
@@ -485,6 +841,7 @@
 		};
 		C93FC51B1F3A189F004232CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0E2EA217D886A5D21DD8BBE /* Pods-VeriStocksUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = WX5MNWGK6X;
@@ -516,6 +873,7 @@
 				C93FC5151F3A189F004232CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C93FC5161F3A189F004232CA /* Build configuration list for PBXNativeTarget "VeriStocksTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +882,7 @@
 				C93FC5181F3A189F004232CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C93FC5191F3A189F004232CA /* Build configuration list for PBXNativeTarget "VeriStocksUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +891,7 @@
 				C93FC51B1F3A189F004232CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
