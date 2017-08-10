@@ -10,7 +10,19 @@ import UIKit
 
 class StockListCell: UITableViewCell {
     
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var symbolDirection: UIImageView!
+    @IBOutlet weak var symbolName: UILabel!
+    @IBOutlet weak var symbolPrice: UILabel!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var difference: UILabel!
+    @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var buying: UILabel!
+    @IBOutlet weak var selling: UILabel!
+    @IBOutlet weak var hour: UILabel!
+    
+    func configure() {
+        
+    }
     
     //Ekranda gozukenler
     /*
@@ -32,5 +44,5 @@ class StockListCell: UITableViewCell {
      Total
      isIndex : false
      */
-
+    
 }

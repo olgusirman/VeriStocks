@@ -10,6 +10,12 @@ import UIKit
 
 class StockListSectionCell: UITableViewCell {
 
-    @IBOutlet weak var testLabelSection: UILabel!
+    @IBOutlet weak var symbol: UILabel!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var difference: UILabel!
+    @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var buying: UILabel!
+    @IBOutlet weak var selling: UILabel!
+    @IBOutlet weak var hour: UILabel!
     
 }

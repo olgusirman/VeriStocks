@@ -11,11 +11,9 @@ import UIKit
 final class StocksTitlesCell: UITableViewCell {
 
     @IBOutlet weak var titleName: UILabel!
-
-    var title : String? {
-        didSet {
-           titleName.text = title
-        }
+    
+    func configure( name : String) {
+        titleName.text = name
     }
     
 }

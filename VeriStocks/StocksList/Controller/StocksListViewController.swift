@@ -130,7 +130,9 @@ extension StocksListViewController : UITableViewDataSource, UITableViewDelegate 
         
         if let filtereTitles = filteredTitles {
             let title = filtereTitles[indexPath.row]
-            cell.testLabel.text = title
+            
+            //TODO: configure and passData
+            
         }
         
         return cell
@@ -145,7 +147,7 @@ extension StocksListViewController : UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 50
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -155,8 +157,6 @@ extension StocksListViewController : UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let sectionCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.stockListSection.rawValue) as! StockListSectionCell
-        
-        sectionCell.testLabelSection.text = "Just a Section"
         
         return sectionCell
     }

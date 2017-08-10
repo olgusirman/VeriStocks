@@ -28,31 +28,34 @@ final class EncryptViewController: UIViewController {
         
         title = "Veripark".localizedUppercase
         
-        let manager = APIManager()
-        
-        /*
-        manager.getEncrypt { (encrypt) in
-            
-            if !encrypt.isEmpty {
-                self.isEncryptParsed = true
-            }
-            
-        }*/
-        
-        if let encrypt = manager.encrypt, !encrypt.isEmpty  {
-            self.isEncryptParsed = true
-        }
-        
+        encryptStatus()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: Helper
+    
+    private func encryptStatus() {
+        
+        let manager = APIManager()
+        
+        if let encrypt = manager.encrypt, !encrypt.isEmpty  {
+            self.isEncryptParsed = true
+        } else {
+            manager.getEncrypt { (encrypt) in
+                if !encrypt.isEmpty {
+                    self.isEncryptParsed = true
+                }
+            }
+        }
+        
+    }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Segue.stocksTitle.rawValue {
@@ -73,5 +76,5 @@ final class EncryptViewController: UIViewController {
         }
         
     }
-
+    
 }

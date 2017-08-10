@@ -98,7 +98,7 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.stocksTitle.rawValue, for: indexPath) as! StocksTitlesCell
         
         let stock = titles[indexPath.row]
-        cell.title = stock.name
+        cell.configure(name: stock.name )
         
         return cell
     }

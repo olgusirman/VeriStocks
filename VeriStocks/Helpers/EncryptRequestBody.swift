@@ -32,5 +32,3 @@ struct EncryptRequestBody {
     }
     
 }
-
-//let params = ItemTrackingRequest(trackingNumbers: "SMT0000000628").xmlString()
