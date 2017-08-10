@@ -60,7 +60,7 @@ class StocksListViewController: UIViewController {
         }
         
         //Data
-        //getData()
+        getData()
         
     }
     
@@ -79,8 +79,12 @@ class StocksListViewController: UIViewController {
         
         //self.titles.removeAll()
         
-        /*
+        APIManager().getStocks { (test) in
+            
+        }
+        
         //get the titles from manager
+        /*
         StocksTitleManager.getStocksTitle { (stockTitles) in
             
             self.titles.append(stockTitles)

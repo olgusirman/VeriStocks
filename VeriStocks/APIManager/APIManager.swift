@@ -104,7 +104,11 @@ final class APIManager {
         
     }
     
-    func getStocks() {
+    func getStocks(period : StockPeriod? = nil, handler : @escaping (_ stockResult : StockResult) -> ()) {
+        
+        guard let encrypt = self.encrypt else {
+            return
+        }
         
         let url = URL(string: Constant.baseUrl.rawValue)!
         var request: URLRequest = URLRequest(url: url)
@@ -114,10 +118,7 @@ final class APIManager {
         request.addValue("length", forHTTPHeaderField: "Content-Length")
         request.timeoutInterval = 60.0
         
-        let reqBodyParameter = "RequestIsValid\(now)"
-        debugPrint(reqBodyParameter)
-        
-        let bodyStr = EncryptRequestBody(parameter: reqBodyParameter).xmlString()
+        let bodyStr = StocksRequestBody( encrypt: encrypt, period: period).xmlString()
         let bodyData = bodyStr.data(using: String.Encoding.utf8, allowLossyConversion: true)
         request.httpBody = bodyData
         
@@ -135,13 +136,13 @@ final class APIManager {
             if let data = data {
                 if let xmlResponse: String = String(data: data, encoding: String.Encoding.utf8) {
                     
-                    let encryptParser = EncryptParser(withXML: xmlResponse)
-                    let encrypt = encryptParser.parse()
-                    print(encrypt)
+                    debugPrint(xmlResponse)
                     
-                    self.encrypt = encrypt
+                    let stocksResultParser = StocksResultParser(withXML: xmlResponse)
+                    let stockResult = stocksResultParser.parse()
                     
-                    encryptHandler(encrypt)
+                    debugPrint(stockResult)
+                    
                     
                 }
             }

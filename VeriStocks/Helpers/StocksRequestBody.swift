@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum StockPeriod : String {
     case noGraphic = "NoGraphic"
@@ -19,11 +20,11 @@ enum StockPeriod : String {
 
 struct StocksRequestBody {
     
-    var parameter: String
     var period : StockPeriod = .day
+    var encrypt : String
     
-    init(parameter: String, period : StockPeriod? = nil) {
-        self.parameter = parameter
+    init( encrypt : String, period : StockPeriod? = nil) {
+        self.encrypt = encrypt
         
         if let period = period {
             self.period = period
@@ -35,21 +36,20 @@ struct StocksRequestBody {
         
         var xml = ""
         
-        var isIPAD = true
-        let DeviceID = ""
-        let deviceType = "ipad"
-        let encrypt = ""
+        let isIpad = UIDevice.current.userInterfaceIdiom == .pad ? true : false
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? "No device id"
+        let deviceType = UIDevice.current.model
         
         xml += "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">"
         xml += "<soapenv:Header/>"
         xml += "<soapenv:Body>"
         xml += "<tem:GetForexStocksandIndexesInfo>"
         xml += "<tem:request>"
-        xml += "<tem:IsIPAD>\(isIPAD)</tem:IsIPAD>"
-        xml += "<tem:DeviceID>\(DeviceID)</tem:DeviceID>"
+        xml += "<tem:IsIPAD>\(isIpad)</tem:IsIPAD>"
+        xml += "<tem:DeviceID>\(deviceId)</tem:DeviceID>"
         xml += "<tem:DeviceType>\(deviceType)</tem:DeviceType>"
         xml += "<tem:RequestKey>\(encrypt)</tem:RequestKey>"
-        xml += "<tem:Period>\(period)</tem:Period>"
+        xml += "<tem:Period>\(period.rawValue)</tem:Period>"
         xml += "</tem:request>"
         xml += "</tem:GetForexStocksandIndexesInfo>"
         xml += "</soapenv:Body>"
