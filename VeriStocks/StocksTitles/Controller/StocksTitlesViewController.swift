@@ -96,6 +96,7 @@ final class StocksTitlesViewController: UIViewController {
             
             controller.responseList = self.responseList
             controller.filteredResponseList = self.filteredResponseList
+            controller.selectedPeriod = self.selectedPeriod
             
         }
         

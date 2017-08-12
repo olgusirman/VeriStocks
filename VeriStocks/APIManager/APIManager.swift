@@ -149,7 +149,7 @@ final class APIManager {
                         let stocksResultParser = StocksResultParser(withXML: xmlResponse)
                         let stockResult = stocksResultParser.parse()
                         
-//                        debugPrint(stockResult)
+                        //                        debugPrint(stockResult)
                         
                         if let success = stockResult.requestResult.success, success {
                             DispatchQueue.main.async {
@@ -169,5 +169,68 @@ final class APIManager {
         task.resume()
         
     }
+    
+    
+    func getStockDetail( symbol : String, period : StockPeriod? = nil, handler : @escaping (_ stockResult : StockResult) -> ()) {
+        
+        guard let encrypt = self.encrypt else {
+            return
+        }
+        
+        let url = URL(string: Constant.baseUrl.rawValue)!
+        var request: URLRequest = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField:"Content-Type")
+        request.addValue("length", forHTTPHeaderField: "Content-Length")
+        request.timeoutInterval = 60.0
+        
+        let bodyStr = StocksRequestBody( encrypt: encrypt, period: period).xmlString(symbol: symbol)
+        let bodyData = bodyStr.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        request.httpBody = bodyData
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard error == nil else {
+                print("\(String(describing: error))")
+                return
+            }
+            
+            //Continue if statusCode == 200
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200  else {
+                print("responseCode \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
+                return
+            }
+            
+            if let data = data {
+                if let xmlResponse: String = String(data: data, encoding: String.Encoding.utf8) {
+                    
+                    //debugPrint(xmlResponse)
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        
+                        let stocksResultParser = StocksResultParser(withXML: xmlResponse)
+                        let stockResult = stocksResultParser.parse()
+                        
+                        debugPrint(stockResult)
+                        
+                        if let success = stockResult.requestResult.success, success {
+                            DispatchQueue.main.async {
+                                handler(stockResult)
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        
+        task.resume()
+        
+    }
+    
     
 }

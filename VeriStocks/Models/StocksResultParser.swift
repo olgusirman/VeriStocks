@@ -53,6 +53,15 @@ import Foundation
  </IMKB30List>
  */
 
+/*
+ <StocknIndexesGraphicInfos>
+     <StockandIndexGraphic>
+         <Price>1.33000</Price>
+         <Date>2012-04- 20T00:00:00</Date>
+     </StockandIndexGraphic>
+                
+ */
+
 class StocksResultParser : NSObject {
     
     enum FetchType {
@@ -61,6 +70,7 @@ class StocksResultParser : NSObject {
         case imkb100
         case responseList
         case requestResult
+        case graphic
     }
     
     var requestResult : RequestResult?
@@ -72,6 +82,9 @@ class StocksResultParser : NSObject {
     var imkb50 : [IMKBObject] = []
     var imkb100 : [IMKBObject] = []
     var currentImkb : IMKBObject?
+    
+    var graphicList : [StockGraphic] = []
+    var currentGraphic : StockGraphic?
     
     var xmlParser: XMLParser?
     var xmlText = ""
@@ -88,7 +101,7 @@ class StocksResultParser : NSObject {
         xmlParser?.delegate = self
         xmlParser?.parse()
         
-        return StockResult(requestResult: requestResult!, responseList: responseList, imkb30: imkb30, imkb50: imkb50, imkb100: imkb100)
+        return StockResult(requestResult: requestResult!, responseList: responseList, imkb30: imkb30, imkb50: imkb50, imkb100: imkb100, graphicList: graphicList)
     }
     
 }
@@ -121,6 +134,10 @@ extension StocksResultParser: XMLParserDelegate {
         case "IMKB30List":
             
             fetchType = .imkb30
+        
+        case "StocknIndexesGraphicInfos":
+            
+            fetchType = .graphic
             
         default: ()
         }
@@ -144,6 +161,10 @@ extension StocksResultParser: XMLParserDelegate {
         
         if elementName == "IMKB30" {
             currentImkb = IMKBObject()
+        }
+        
+        if elementName == "StockandIndexGraphic" {
+            currentGraphic = StockGraphic()
         }
         
     }
@@ -328,6 +349,26 @@ extension StocksResultParser: XMLParserDelegate {
             if elementName == "IMKB100" {
                 if let currentImkb = currentImkb {
                     imkb100.append(currentImkb)
+                }
+            }
+            
+        }
+        
+        if fetchType == .graphic {
+            
+            if elementName == "Price" {
+                if let price = Float(xmlText) {
+                    currentGraphic?.price = price
+                }
+            }
+            
+            if elementName == "Date" {
+                currentGraphic?.date = xmlText.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            
+            if elementName == "StockandIndexGraphic" {
+                if let currentGraphic = currentGraphic {
+                    graphicList.append(currentGraphic)
                 }
             }
             

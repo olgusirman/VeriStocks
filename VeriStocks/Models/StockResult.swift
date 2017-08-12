@@ -98,6 +98,7 @@ struct StockResult {
     var imkb30 : [IMKBObject]
     var imkb50 : [IMKBObject]
     var imkb100 : [IMKBObject]
+    var graphicList : [StockGraphic]
     
 }
 
@@ -128,4 +129,9 @@ struct IMKBObject {
     var name : String?
     var gain : Float?
     var fund : Float?
+}
+
+struct StockGraphic {
+    var price : Float?
+    var date : String?
 }

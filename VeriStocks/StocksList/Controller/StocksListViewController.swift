@@ -14,6 +14,7 @@ class StocksListViewController: UIViewController {
     
     //TODO: if selectedStock is Searchable, searchBar should be usable
     var selectedStock : StockTitle?
+    var selectedPeriod : StockPeriod?
     
     fileprivate enum CellIdentifier : String {
         case stockList
@@ -21,7 +22,7 @@ class StocksListViewController: UIViewController {
     }
     
     fileprivate enum Segue : String {
-        case titleList
+        case stockDetail
     }
     
     var responseList: [ResponseList] = []
@@ -164,10 +165,12 @@ class StocksListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == Segue.titleList.rawValue {
+        if segue.identifier == Segue.stockDetail.rawValue {
             
-            //            guard let controller = segue.destination as? StocksListViewController, let stock = sender as? StockTitle else { return }
-            //            controller.selectedStock = stock
+            guard let controller = segue.destination as? StockDetailViewController, let responseList = sender as? ResponseList else { return }
+            
+            controller.responseList = responseList
+            controller.selectedPeriod = self.selectedPeriod
             
         }
         
@@ -209,10 +212,10 @@ extension StocksListViewController : UITableViewDataSource, UITableViewDelegate 
             let filteredResponse = filteredResponseList[indexPath.row]
             
             debugPrint(filteredResponse)
+            performSegue(withIdentifier: Segue.stockDetail.rawValue, sender: filteredResponse)
             
         }
         
-        //performSegue(withIdentifier: Segue.titleList.rawValue, sender: stock)
         
     }
     
