@@ -71,27 +71,32 @@ final class APIManager {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            if let httpResponse = response as? HTTPURLResponse {
-                print("responseCode \(httpResponse.statusCode)")
-            }
-            
             guard error == nil else {
                 print("\(String(describing: error))")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200  else {
+                print("responseCode \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 return
             }
             
             if let data = data {
                 if let xmlResponse: String = String(data: data, encoding: String.Encoding.utf8) {
                     
-                    //TODO: check statusCode 200
-                    
-                    let encryptParser = EncryptParser(withXML: xmlResponse)
-                    let encrypt = encryptParser.parse()
-                    print(encrypt)
-                    
-                    self.encrypt = encrypt
-                    
-                    encryptHandler(encrypt)
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        
+                        let encryptParser = EncryptParser(withXML: xmlResponse)
+                        let encrypt = encryptParser.parse()
+                        print(encrypt)
+                        
+                        self.encrypt = encrypt
+                        
+                        DispatchQueue.main.async {
+                            encryptHandler(encrypt)
+                        }
+                        
+                    }
                     
                 }
             }
@@ -124,25 +129,36 @@ final class APIManager {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            if let httpResponse = response as? HTTPURLResponse {
-                print("responseCode \(httpResponse.statusCode)")
-            }
-            
             guard error == nil else {
                 print("\(String(describing: error))")
+                return
+            }
+            
+            //Continue if statusCode == 200
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200  else {
+                print("responseCode \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 return
             }
             
             if let data = data {
                 if let xmlResponse: String = String(data: data, encoding: String.Encoding.utf8) {
                     
-                    debugPrint(xmlResponse)
-                    
-                    let stocksResultParser = StocksResultParser(withXML: xmlResponse)
-                    let stockResult = stocksResultParser.parse()
-                    
-                    debugPrint(stockResult)
-                    
+                    //debugPrint(xmlResponse)
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        
+                        let stocksResultParser = StocksResultParser(withXML: xmlResponse)
+                        let stockResult = stocksResultParser.parse()
+                        
+//                        debugPrint(stockResult)
+                        
+                        if let success = stockResult.requestResult.success, success {
+                            DispatchQueue.main.async {
+                                handler(stockResult)
+                            }
+                        }
+                        
+                        
+                    }
                     
                 }
             }

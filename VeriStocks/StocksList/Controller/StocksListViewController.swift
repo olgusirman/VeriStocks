@@ -14,7 +14,7 @@ class StocksListViewController: UIViewController {
     
     //TODO: if selectedStock is Searchable, searchBar should be usable
     var selectedStock : StockTitle?
-
+    
     fileprivate enum CellIdentifier : String {
         case stockList
         case stockListSection
@@ -24,8 +24,8 @@ class StocksListViewController: UIViewController {
         case titleList
     }
     
-    fileprivate lazy var titles : [String] = ["A","B","C","D","E","F"]
-    fileprivate var filteredTitles: [String]?
+    var responseList: [ResponseList] = []
+    var filteredResponseList: [ResponseList]?
     fileprivate var searchController : UISearchController?
     
     //MARK: UI
@@ -42,8 +42,7 @@ class StocksListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filteredTitles = titles
-
+        
         let searchController = UISearchController(searchResultsController: nil)
         self.searchController = searchController
         searchController.searchResultsUpdater = self
@@ -53,14 +52,15 @@ class StocksListViewController: UIViewController {
         //UI
         if let selectedStock = selectedStock {
             if selectedStock.isSearchable {
-                //SearchBar must be added
+                
+                //If selectedStock -> SearchBar must be added
                 searchController.searchBar.searchBarStyle = .minimal
                 tableView.tableHeaderView = searchController.searchBar
             }
         }
         
         //Data
-        getData()
+//        getData()
         
     }
     
@@ -75,27 +75,87 @@ class StocksListViewController: UIViewController {
     
     //MARK: Helper
     
+    /*
     private func getData() {
         
-        //self.titles.removeAll()
-        
-        APIManager().getStocks { (test) in
+        APIManager().getStocks { (stockResult) in
+            
+            //UI
+            if let selectedStock = self.selectedStock {
+                
+                DispatchQueue.global(qos: .userInteractive).async {
+                    
+                    switch selectedStock.type {
+                    case .general:
+                        
+                        let responseList = stockResult.responseList
+                        
+                        self.responseList = responseList
+                        self.filteredResponseList = responseList
+                        
+                    case .up:
+                        
+                        let responseList = stockResult.responseList.filter({ (responseList) -> Bool in
+                            
+                            if let difference = responseList.difference {
+                                return difference >= 0
+                            }
+                            return true
+                        })
+                        
+                        self.responseList = responseList
+                        self.filteredResponseList = responseList
+                        
+                    case .down:
+                        
+                        let responseList = stockResult.responseList.filter({ (responseList) -> Bool in
+                            
+                            if let difference = responseList.difference {
+                                return difference < 0
+                            }
+                            return true
+                        })
+                        
+                        self.responseList = responseList
+                        self.filteredResponseList = responseList
+                        
+                    case .IMKB30:
+                        
+                        let responseList = stockResult.responseList
+                        
+                        self.responseList = responseList
+                        self.filteredResponseList = responseList
+                        
+                    case .IMKB50:
+                        
+                        let responseList = stockResult.responseList
+                        
+                        self.responseList = responseList
+                        self.filteredResponseList = responseList
+                        
+                    case .IMKB100:
+                        
+                        let responseList = stockResult.responseList
+                        
+                        self.responseList = responseList
+                        self.filteredResponseList = responseList
+                        
+                    }
+                    
+                }
+                
+                //let indexSet = IndexSet(integer: 0)
+                //self.tableView.reloadSections(indexSet, with: .automatic)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            }
             
         }
         
-        //get the titles from manager
-        /*
-        StocksTitleManager.getStocksTitle { (stockTitles) in
-            
-            self.titles.append(stockTitles)
-            
-            //reload first section
-            let firstIndexSet = IndexSet(integer: 0)
-            tableView.reloadSections(firstIndexSet, with: .top)
-            
-        }*/
-        
     }
+    */
     
     // MARK: - Navigation
     
@@ -103,14 +163,14 @@ class StocksListViewController: UIViewController {
         
         if segue.identifier == Segue.titleList.rawValue {
             
-//            guard let controller = segue.destination as? StocksListViewController, let stock = sender as? StockTitle else { return }
-//            controller.selectedStock = stock
+            //            guard let controller = segue.destination as? StocksListViewController, let stock = sender as? StockTitle else { return }
+            //            controller.selectedStock = stock
             
         }
         
     }
     
-
+    
 }
 
 //MARK: UITableView DataSource - Delegate
@@ -121,22 +181,20 @@ extension StocksListViewController : UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let filtereTitles = filteredTitles else {
+        guard let filteredResponseList = filteredResponseList else {
             return 0
         }
         
-        return filtereTitles.count
+        return filteredResponseList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.stockList.rawValue, for: indexPath) as! StockListCell
         
-        if let filtereTitles = filteredTitles {
-            let title = filtereTitles[indexPath.row]
-            
-            //TODO: configure and passData
-            
+        if let filteredResponseList = filteredResponseList {
+            let filteredResponse = filteredResponseList[indexPath.row]
+            cell.configure(response: filteredResponse)
         }
         
         return cell
@@ -144,9 +202,14 @@ extension StocksListViewController : UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let stock = titles[indexPath.row]
+        if let filteredResponseList = filteredResponseList {
+            let filteredResponse = filteredResponseList[indexPath.row]
+            
+            debugPrint(filteredResponse)
+            
+        }
+        
         //performSegue(withIdentifier: Segue.titleList.rawValue, sender: stock)
-        debugPrint(stock)
         
     }
     
@@ -172,12 +235,17 @@ extension StocksListViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
         if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-            filteredTitles = titles.filter { title in
-                return title.lowercased().contains(searchText.lowercased())
+            filteredResponseList = responseList.filter { response in
+                //return response.lowercased().contains(searchText.lowercased())
+                if let symbol = response.symbol {
+                    return symbol.lowercased().contains(searchText.lowercased())
+                }
+                
+                return true
             }
             
         } else {
-            filteredTitles = titles
+            filteredResponseList = responseList
         }
         tableView.reloadData()
     }

@@ -9,6 +9,17 @@
 import Foundation
 
 struct StockTitle {
+    
+    enum `Type` {
+        case general
+        case up
+        case down
+        case IMKB30
+        case IMKB50
+        case IMKB100
+    }
+    
     var name: String
     var isSearchable : Bool
+    var type : Type
 }

@@ -45,11 +45,59 @@ import Foundation
  <Date>string</Date>
  */
 
+/*
+ <IMKB100List>
+ <IMKB100>
+ <Symbol>string</Symbol>
+ <Name>string</Name>
+ <Gain>decimal</Gain>
+ <Fund>decimal</Fund>
+ </IMKB100>
+ ...
+ ...
+ </IMKB100List>
+ 
+ */
+
+/*
+ <IMKB50List>
+ <IMKB50>
+ <Symbol>string</Symbol>
+ <Name>string</Name>
+ <Gain>decimal</Gain>
+ <Fund>decimal</Fund>
+ </IMKB50>
+ ...
+ ...
+ </IMKB50List>
+ 
+ */
+
+/*
+ <IMKB30List>
+ <IMKB30>
+ <Symbol>string</Symbol>
+ <Name>string</Name>
+ <Gain>decimal</Gain>
+ <Fund>decimal</Fund>
+ </IMKB30>
+ <IMKB30>
+ <Symbol>string</Symbol>
+ <Name>string</Name>
+ <Gain>decimal</Gain>
+ <Fund>decimal</Fund>
+ </IMKB30>
+ </IMKB30List>
+ */
+
 //GetForexStocksandIndexesInfoResult
 struct StockResult {
     
     var requestResult : RequestResult   //RequestResult
     var responseList : [ResponseList]   //StocknIndexesResponseList
+    var imkb30 : [IMKBObject]
+    var imkb50 : [IMKBObject]
+    var imkb100 : [IMKBObject]
     
 }
 
@@ -58,7 +106,7 @@ struct RequestResult {
     var message : String?   //Message
 }
 
-class ResponseList {
+struct ResponseList {
     
     var symbol : String?         //Symbol
     var price : Float?           //Price
@@ -66,11 +114,18 @@ class ResponseList {
     var volume : Float?          //Volume
     var buying : Float?          //Buying
     var selling : Float?         //Selling
-    var hour : Float?            //Hour
+    var hour : Int?              //Hour
     var dayPeakPrice : Float?    //DayPeakPrice
     var dayLowestPrice : Float?  //DayLowestPrice
     var total : Float?           //Total
     var isIndex : Bool?          //IsIndex
     var date : String?           //Date
     
+}
+
+struct IMKBObject {
+    var symbol : String?
+    var name : String?
+    var gain : Float?
+    var fund : Float?
 }

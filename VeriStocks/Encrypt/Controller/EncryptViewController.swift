@@ -42,6 +42,7 @@ final class EncryptViewController: UIViewController {
         
         let manager = APIManager()
         
+        /* enrypt changes depends on period
         if let encrypt = manager.encrypt, !encrypt.isEmpty  {
             self.isEncryptParsed = true
         } else {
@@ -49,6 +50,12 @@ final class EncryptViewController: UIViewController {
                 if !encrypt.isEmpty {
                     self.isEncryptParsed = true
                 }
+            }
+        }*/
+        
+        manager.getEncrypt { (encrypt) in
+            if !encrypt.isEmpty {
+                self.isEncryptParsed = true
             }
         }
         

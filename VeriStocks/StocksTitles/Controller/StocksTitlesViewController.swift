@@ -9,8 +9,8 @@
 import UIKit
 
 final class StocksTitlesViewController: UIViewController {
-
-    //MARK: Properties 
+    
+    //MARK: Properties
     var stocksTitle : String?
     
     fileprivate enum CellIdentifier : String {
@@ -22,6 +22,10 @@ final class StocksTitlesViewController: UIViewController {
     }
     
     fileprivate lazy var titles : [StockTitle] = []
+    
+    fileprivate lazy var responseList: [ResponseList] = []
+    fileprivate var filteredResponseList: [ResponseList]?
+    fileprivate var stockResult : StockResult?
     
     //MARK: UI
     @IBOutlet weak var tableView: UITableView! {
@@ -46,16 +50,20 @@ final class StocksTitlesViewController: UIViewController {
         getData()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     //MARK: Helper
-
+    
     private func getData() {
         
         self.titles.removeAll()
+        
+        APIManager().getStocks { (stockResult) in
+            self.stockResult = stockResult
+        }
         
         //get the titles from manager
         StocksTitleManager.getStocksTitle { (stockTitles) in
@@ -71,19 +79,25 @@ final class StocksTitlesViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Segue.titleList.rawValue {
             
-            guard let controller = segue.destination as? StocksListViewController, let stock = sender as? StockTitle else { return }
-            controller.selectedStock = stock
+            guard let controller = segue.destination as? StocksListViewController else { return }
+            
+            if let selectedStock = sender as? StockTitle {
+                controller.selectedStock = selectedStock
+            }
+            
+            controller.responseList = self.responseList
+            controller.filteredResponseList = self.filteredResponseList
             
         }
         
     }
     
-
+    
 }
 
 //MARK: UITableView DataSource - Delegate
@@ -105,8 +119,117 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let stock = titles[indexPath.row]
-        performSegue(withIdentifier: Segue.titleList.rawValue, sender: stock)
+        let selectedStock = titles[indexPath.row]
+        
+        guard let stockResult = self.stockResult else { return }
+        
+        //UI
+        ////
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            switch selectedStock.type {
+            case .general:
+                
+                let responseList = stockResult.responseList
+                
+                self.responseList = responseList
+                self.filteredResponseList = responseList
+                
+            case .up:
+                
+                let responseList = stockResult.responseList.filter({ (responseList) -> Bool in
+                    
+                    if let difference = responseList.difference {
+                        return difference >= 0
+                    }
+                    return true
+                })
+                
+                self.responseList = responseList
+                self.filteredResponseList = responseList
+                
+            case .down:
+                
+                let responseList = stockResult.responseList.filter({ (responseList) -> Bool in
+                    
+                    if let difference = responseList.difference {
+                        return difference < 0
+                    }
+                    return true
+                })
+                
+                self.responseList = responseList
+                self.filteredResponseList = responseList
+                
+            case .IMKB30:
+                
+                //take that imkb30 companies and just list that cmopanies
+                //let imkb30CompanySymbols = stockResult.imkb30.map({ $0.symbol })
+                
+                let responseList = stockResult.responseList.filter({
+                    
+                    for imkbCompany in stockResult.imkb30 {
+                        
+                        if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
+                            return true
+                        }
+                        
+                    }
+                    
+                    return false
+                    
+                })
+                
+                
+                self.responseList = responseList
+                self.filteredResponseList = responseList
+                
+            case .IMKB50:
+                
+                let responseList = stockResult.responseList.filter({
+                    
+                    for imkbCompany in stockResult.imkb50 {
+                        
+                        if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
+                            return true
+                        }
+                        
+                    }
+                    
+                    return false
+                    
+                })
+                
+                self.responseList = responseList
+                self.filteredResponseList = responseList
+                
+            case .IMKB100:
+                
+                let responseList = stockResult.responseList.filter({
+                    
+                    for imkbCompany in stockResult.imkb100 {
+                        
+                        if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
+                            return true
+                        }
+                        
+                    }
+                    
+                    return false
+                    
+                })
+                
+                self.responseList = responseList
+                self.filteredResponseList = responseList
+                
+            }
+            
+            DispatchQueue.main.async {
+                //    self.tableView.reloadData()
+                self.performSegue(withIdentifier: Segue.titleList.rawValue, sender: selectedStock)
+            }
+            
+        }
         
     }
     
