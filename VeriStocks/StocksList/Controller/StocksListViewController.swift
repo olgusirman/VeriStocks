@@ -51,6 +51,9 @@ class StocksListViewController: UIViewController {
         
         //UI
         if let selectedStock = selectedStock {
+            
+            title = selectedStock.name
+            
             if selectedStock.isSearchable {
                 
                 //If selectedStock -> SearchBar must be added

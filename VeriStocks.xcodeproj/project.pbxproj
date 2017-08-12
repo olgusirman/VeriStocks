@@ -35,6 +35,7 @@
 		C9AA04DD1F3BAA2D004FA53C /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AA04DC1F3BAA2D004FA53C /* AlertHelper.swift */; };
 		C9AA04DF1F3BB2A5004FA53C /* StockListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AA04DE1F3BB2A5004FA53C /* StockListCell.swift */; };
 		C9AA04E11F3BC3FE004FA53C /* StockListSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AA04E01F3BC3FE004FA53C /* StockListSectionCell.swift */; };
+		C9FFC74B1F3F684700B15AA6 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FFC74A1F3F684700B15AA6 /* StockDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		C9AA04DC1F3BAA2D004FA53C /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		C9AA04DE1F3BB2A5004FA53C /* StockListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListCell.swift; sourceTree = "<group>"; };
 		C9AA04E01F3BC3FE004FA53C /* StockListSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockListSectionCell.swift; sourceTree = "<group>"; };
+		C9FFC74A1F3F684700B15AA6 /* StockDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		E23B44DDD2F3B1FD39523DBA /* Pods-VeriStocksTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksTests/Pods-VeriStocksTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1754186558E30F74FDCAE3F /* Pods-VeriStocksUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeriStocksUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeriStocksUITests/Pods-VeriStocksUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +233,7 @@
 		C93FC4ED1F3A189F004232CA /* VeriStocks */ = {
 			isa = PBXGroup;
 			children = (
+				C9FFC7481F3F682700B15AA6 /* StockDetail */,
 				C94E97121F3A86C6003E2271 /* StocksList */,
 				C93D35A11F3A793700AE00FD /* StocksTitles */,
 				C93D359D1F3A783B00AE00FD /* Encrypt */,
@@ -335,6 +338,22 @@
 			children = (
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		C9FFC7481F3F682700B15AA6 /* StockDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C9FFC7491F3F683300B15AA6 /* Controller */,
+			);
+			path = StockDetail;
+			sourceTree = "<group>";
+		};
+		C9FFC7491F3F683300B15AA6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C9FFC74A1F3F684700B15AA6 /* StockDetailViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,6 +645,7 @@
 				C9AA04DF1F3BB2A5004FA53C /* StockListCell.swift in Sources */,
 				C9AA04DD1F3BAA2D004FA53C /* AlertHelper.swift in Sources */,
 				C93FC5211F3A5203004232CA /* Router.swift in Sources */,
+				C9FFC74B1F3F684700B15AA6 /* StockDetailViewController.swift in Sources */,
 				C9AA04E11F3BC3FE004FA53C /* StockListSectionCell.swift in Sources */,
 				C93FC51E1F3A4B85004232CA /* APIManager.swift in Sources */,
 				C93D35A01F3A787400AE00FD /* EncryptViewController.swift in Sources */,

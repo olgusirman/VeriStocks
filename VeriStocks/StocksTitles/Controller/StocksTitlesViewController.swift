@@ -21,6 +21,8 @@ final class StocksTitlesViewController: UIViewController {
         case titleList
     }
     
+    var selectedPeriod : StockPeriod?
+    
     fileprivate lazy var titles : [StockTitle] = []
     
     fileprivate lazy var responseList: [ResponseList] = []
@@ -61,9 +63,11 @@ final class StocksTitlesViewController: UIViewController {
         
         self.titles.removeAll()
         
-        APIManager().getStocks { (stockResult) in
+        //Get Stocks with selectedPeriod
+        APIManager().getStocks(period: selectedPeriod) { (stockResult) in
             self.stockResult = stockResult
         }
+        
         
         //get the titles from manager
         StocksTitleManager.getStocksTitle { (stockTitles) in
@@ -170,6 +174,7 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
                     
                     for imkbCompany in stockResult.imkb30 {
                         
+                        //symbols are checked
                         if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
                             return true
                         }
@@ -190,6 +195,7 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
                     
                     for imkbCompany in stockResult.imkb50 {
                         
+                        //symbols are checked
                         if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
                             return true
                         }
@@ -209,6 +215,7 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
                     
                     for imkbCompany in stockResult.imkb100 {
                         
+                        //symbols are checked
                         if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
                             return true
                         }

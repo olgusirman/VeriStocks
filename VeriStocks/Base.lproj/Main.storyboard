@@ -30,16 +30,23 @@
                                     <segue destination="KcM-aR-gCK" kind="show" identifier="stocksTitle" id="5o1-I4-qde"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Cl-Hv-fh5">
+                                <rect key="frame" x="0.0" y="369" width="375" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yWe-ZI-a7W" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AIu-Gv-WSw"/>
                             <constraint firstItem="yWe-ZI-a7W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="65" id="LyB-EG-lAz"/>
                             <constraint firstAttribute="trailing" secondItem="yWe-ZI-a7W" secondAttribute="trailing" constant="65" id="cnd-PA-Z3h"/>
+                            <constraint firstItem="3Cl-Hv-fh5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="exM-Hq-avV"/>
+                            <constraint firstItem="3Cl-Hv-fh5" firstAttribute="top" secondItem="yWe-ZI-a7W" secondAttribute="bottom" constant="20" id="uYk-IM-iPw"/>
+                            <constraint firstAttribute="trailing" secondItem="3Cl-Hv-fh5" secondAttribute="trailing" id="wZX-tg-apE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vfq-Vn-fE6"/>
                     <connections>
+                        <outlet property="pickerView" destination="3Cl-Hv-fh5" id="YxS-fU-1kz"/>
                         <outlet property="stocksLandingButton" destination="yWe-ZI-a7W" id="Xsp-Kd-UCV"/>
                     </connections>
                 </viewController>
@@ -121,63 +128,64 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OtJ-pJ-klY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockList" id="KaQ-PH-Dq8" customClass="StockListCell" customModule="VeriStocks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KaQ-PH-Dq8" id="t2n-TZ-869">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Usb-5V-EMk">
-                                                    <rect key="frame" x="10" y="32" width="355" height="15"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Kyr-ts-rNj">
+                                                    <rect key="frame" x="10" y="32" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="HHt-25-7RE"/>
+                                                        <constraint firstAttribute="width" secondItem="Kyr-ts-rNj" secondAttribute="height" multiplier="1:1" id="Lh3-wB-SyN"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Usb-5V-EMk">
+                                                    <rect key="frame" x="40" y="33" width="325" height="14"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Kyr-ts-rNj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="15" id="HHt-25-7RE"/>
-                                                                <constraint firstAttribute="width" secondItem="Kyr-ts-rNj" secondAttribute="height" multiplier="1:1" id="Lh3-wB-SyN"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sembol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="W6x-1j-k5k" userLabel="Sembol">
-                                                            <rect key="frame" x="28" y="0.0" width="43" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sembol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="W6x-1j-k5k" userLabel="Sembol">
+                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiyat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-rE-xrz" userLabel="Fiyat">
-                                                            <rect key="frame" x="84" y="0.0" width="27" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiyat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-rE-xrz" userLabel="Fiyat">
+                                                            <rect key="frame" x="47" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% Fark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="Sfc-Ul-zxu" userLabel="% Fark">
-                                                            <rect key="frame" x="124" y="0.0" width="37" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% Fark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="Sfc-Ul-zxu" userLabel="% Fark">
+                                                            <rect key="frame" x="94" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İşlem Hacmi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="kks-Wm-tx5" userLabel="İşlem Hacmi">
-                                                            <rect key="frame" x="175" y="0.0" width="68" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İşlem Hacmi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="kks-Wm-tx5" userLabel="İşlem Hacmi">
+                                                            <rect key="frame" x="141" y="0.0" width="43" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alış" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="9G7-BC-T9i" userLabel="Alış">
-                                                            <rect key="frame" x="256" y="0.0" width="20" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alış" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="9G7-BC-T9i" userLabel="Alış">
+                                                            <rect key="frame" x="189" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satış" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="xIn-8l-ava" userLabel="Satış">
-                                                            <rect key="frame" x="289" y="0.0" width="28" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satış" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="xIn-8l-ava" userLabel="Satış">
+                                                            <rect key="frame" x="236" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-qo-DZv" userLabel="Saat">
-                                                            <rect key="frame" x="330" y="0.0" width="25" height="15"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="JF4-qo-DZv" userLabel="Saat">
+                                                            <rect key="frame" x="283" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -185,7 +193,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Usb-5V-EMk" firstAttribute="leading" secondItem="t2n-TZ-869" secondAttribute="leading" constant="10" id="PP0-dd-VSG"/>
+                                                <constraint firstItem="Usb-5V-EMk" firstAttribute="leading" secondItem="t2n-TZ-869" secondAttribute="leading" constant="40" id="PP0-dd-VSG"/>
+                                                <constraint firstItem="Kyr-ts-rNj" firstAttribute="centerY" secondItem="t2n-TZ-869" secondAttribute="centerY" id="Pyh-Jj-nYy"/>
+                                                <constraint firstItem="Kyr-ts-rNj" firstAttribute="leading" secondItem="t2n-TZ-869" secondAttribute="leading" constant="10" id="YHZ-ZU-yLj"/>
                                                 <constraint firstAttribute="trailing" secondItem="Usb-5V-EMk" secondAttribute="trailing" constant="10" id="nFS-7l-2UK"/>
                                                 <constraint firstItem="Usb-5V-EMk" firstAttribute="centerY" secondItem="t2n-TZ-869" secondAttribute="centerY" id="vm3-6i-x4F"/>
                                             </constraints>
@@ -205,73 +215,63 @@
                                         <rect key="frame" x="0.0" y="108" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9mP-um-dua" id="UXR-gj-3wp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ViS-nj-LBl">
-                                                    <rect key="frame" x="8" y="0.0" width="367" height="50"/>
+                                                    <rect key="frame" x="8" y="0.0" width="367" height="49"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fib-6T-pbO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="367" height="49"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     </view>
                                                     <blurEffect style="light"/>
                                                 </visualEffectView>
-                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-DE-EqJ">
-                                                    <rect key="frame" x="10" y="18" width="355" height="14"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LDs-DE-EqJ">
+                                                    <rect key="frame" x="40" y="18" width="325" height="14"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Jhb-3H-rHk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="15" height="14"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="15" id="6oZ-dP-bV3"/>
-                                                                <constraint firstAttribute="width" secondItem="Jhb-3H-rHk" secondAttribute="height" multiplier="1:1" id="ucV-7Z-kI3"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sembol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="tOd-zg-6cL" userLabel="Sembol">
-                                                            <rect key="frame" x="23" y="0.0" width="48" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sembol" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="tOd-zg-6cL" userLabel="Sembol">
+                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiyat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="W9u-u8-BIp" userLabel="Fiyat">
-                                                            <rect key="frame" x="79" y="0.0" width="31" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fiyat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="W9u-u8-BIp" userLabel="Fiyat">
+                                                            <rect key="frame" x="47" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% Fark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="eP5-Km-3xl" userLabel="% Fark">
-                                                            <rect key="frame" x="118" y="0.0" width="42" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% Fark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="eP5-Km-3xl" userLabel="% Fark">
+                                                            <rect key="frame" x="94" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İşlem Hacmi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="XNK-Ch-RbW" userLabel="İşlem Hacmi">
-                                                            <rect key="frame" x="168" y="0.0" width="78" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="İ. Hacmi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="XNK-Ch-RbW" userLabel="İşlem Hacmi">
+                                                            <rect key="frame" x="141" y="0.0" width="43" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alış" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="XhH-mF-kB2" userLabel="Alış">
-                                                            <rect key="frame" x="254" y="0.0" width="24" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alış" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="XhH-mF-kB2" userLabel="Alış">
+                                                            <rect key="frame" x="189" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satış" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="JU8-np-Kmd" userLabel="Satış">
-                                                            <rect key="frame" x="286" y="0.0" width="32" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satış" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="JU8-np-Kmd" userLabel="Satış">
+                                                            <rect key="frame" x="236" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="uIR-pK-jUO" userLabel="Saat">
-                                                            <rect key="frame" x="326" y="0.0" width="29" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="uIR-pK-jUO" userLabel="Saat">
+                                                            <rect key="frame" x="283" y="0.0" width="42" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Jhb-3H-rHk" firstAttribute="width" secondItem="Jhb-3H-rHk" secondAttribute="height" multiplier="1:1" id="rzO-bL-50a"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -282,10 +282,10 @@
                                                 <constraint firstItem="LDs-DE-EqJ" firstAttribute="centerY" secondItem="UXR-gj-3wp" secondAttribute="centerY" id="fub-vd-9QI"/>
                                                 <constraint firstAttribute="trailing" secondItem="ViS-nj-LBl" secondAttribute="trailing" id="hr9-q5-lqR"/>
                                                 <constraint firstItem="ViS-nj-LBl" firstAttribute="leading" secondItem="UXR-gj-3wp" secondAttribute="leadingMargin" id="oQL-E9-j5l"/>
-                                                <constraint firstItem="LDs-DE-EqJ" firstAttribute="leading" secondItem="UXR-gj-3wp" secondAttribute="leading" constant="10" id="xNG-B6-j2H"/>
+                                                <constraint firstItem="LDs-DE-EqJ" firstAttribute="leading" secondItem="UXR-gj-3wp" secondAttribute="leading" constant="40" id="xNG-B6-j2H"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
                                             <outlet property="buying" destination="XhH-mF-kB2" id="nl5-Sy-qKR"/>
                                             <outlet property="difference" destination="eP5-Km-3xl" id="EEh-rL-cWb"/>
@@ -308,11 +308,30 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="OtJ-pJ-klY" id="ukl-hz-wsn"/>
+                        <segue destination="Y2l-IY-AhU" kind="show" id="5B9-ly-HfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0N-5g-6Tv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2576.8000000000002" y="136.28185907046478"/>
+        </scene>
+        <!--Stock Detail View Controller-->
+        <scene sceneID="AaM-IV-DBj">
+            <objects>
+                <viewController id="Y2l-IY-AhU" customClass="StockDetailViewController" customModule="VeriStocks" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GLG-Mt-Wn3"/>
+                        <viewControllerLayoutGuide type="bottom" id="uSH-YS-2aj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mz1-cl-hQI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QGw-cG-DbK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3426" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dnN-UI-6yv">

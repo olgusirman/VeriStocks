@@ -111,3 +111,51 @@ extension Int {
     }
     
 }
+
+extension Int {
+    
+    var toDecimal : String {
+        
+        let formatter = NumberFormatter()
+        formatter.formatterBehavior = .behavior10_4
+        formatter.locale = NSLocale.current
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        formatter.usesGroupingSeparator = true
+        formatter.usesSignificantDigits = true
+        
+        formatter.groupingSeparator = ","
+        formatter.maximumSignificantDigits = 4
+        
+        
+        //        formatter.minimumSignificantDigits = 3
+        
+        if self >= 1000000 {
+            let number = NSNumber(value: self)
+            //            formatter.usesGroupingSeparator = false
+            
+            var formatterString = formatter.string(from: number)!
+            formatterString.characters.removeLast()
+            formatterString.characters.removeLast()
+            //formatterString.characters.removeLast()
+            
+            return "\(formatterString) M"
+            
+        } else if self >= 10000 {
+            
+            formatter.groupingSeparator = "."
+            
+            let number = NSNumber(value: self)
+            var formatterString = formatter.string(from: number)!
+            formatterString.characters.removeLast()
+            formatterString.characters.removeLast()
+            
+            return "\(formatterString) B"
+            
+        }
+        
+        let number = NSNumber(value: self)
+        return formatter.string(from: number)!
+        
+    }
+    
+}
