@@ -8,9 +8,7 @@ target 'VeriStocks' do
 
   # Pods for VeriStocks
 
-pod 'Alamofire'
-pod 'SWXMLHash', '~> 4.0.0'
-pod 'EVReflection/XML'
+pod 'SwiftChart'
 
   target 'VeriStocksTests' do
     inherit! :search_paths

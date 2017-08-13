@@ -1,23 +1,12 @@
 PODS:
-  - Alamofire (4.5.0)
-  - EVReflection/Core (4.17.2)
-  - EVReflection/XML (4.17.2):
-    - EVReflection/Core
-    - XMLDictionary
-  - SWXMLHash (4.0.0)
-  - XMLDictionary (1.4.1)
+  - SwiftChart (0.5.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - EVReflection/XML
-  - SWXMLHash (~> 4.0.0)
+  - SwiftChart
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  EVReflection: e01af7fff66f12a4223595cf2f3cab393c3575a1
-  SWXMLHash: 6bbc0bf72975a18ceda469fb7d6a886a26d81694
-  XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
+  SwiftChart: d1d22d2b1c4582f4d561edf97a210059c00ee256
 
-PODFILE CHECKSUM: 25e765945b91e0bc98ee9718eedbe6b3d00f5e3b
+PODFILE CHECKSUM: 04ef2de7cfb36c5386ade80cc509f971668019a7
 
 COCOAPODS: 1.2.0

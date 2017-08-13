@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>EVReflection.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-VeriStocks.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,12 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SWXMLHash.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>XMLDictionary.xcscheme</key>
+		<key>SwiftChart.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,32 +27,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>103BC437667F2A7AACCF67DD5DAB0349</key>
+		<key>84582368CF21C771B688A77D1AA9C70E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6943332B8B3ABF9BEF1D762501879764</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B1A044222D6CC67B99B0EB5B3D54D525</key>
+		<key>96BC6F7073D0E071DE5CAA9C21C81B57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B3FDE9CA8B6EA617D162C1C1FB9E345A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B5E2F2A604DD12E7F9DE8C5BDCE0F995</key>
 		<dict>
 			<key>primary</key>
 			<true/>

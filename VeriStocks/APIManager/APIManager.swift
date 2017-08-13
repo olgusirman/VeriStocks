@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 final class APIManager {
     
@@ -211,7 +210,7 @@ final class APIManager {
                         let stocksResultParser = StocksResultParser(withXML: xmlResponse)
                         let stockResult = stocksResultParser.parse()
                         
-                        debugPrint(stockResult)
+                        //debugPrint(stockResult)
                         
                         if let success = stockResult.requestResult.success, success {
                             DispatchQueue.main.async {
