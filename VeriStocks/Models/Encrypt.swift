@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EncryptParser : NSObject {
+final class EncryptParser : NSObject {
     
     var encryptResult : String?
     
@@ -34,20 +34,19 @@ extension EncryptParser: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
-        //temp string ini her seferinde parse a basladiginda clean
         xmlText = ""
-        if elementName == "EncryptResponse" {
+        if elementName == "EncryptResponse" { //Start with your object
             currentEncryptResult = ""
         }
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        if elementName == "EncryptResult" {
+        if elementName == "EncryptResult" { //Map part
             currentEncryptResult = xmlText.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         
-        if elementName == "EncryptResponse" { //Finish -> son işlemleri yap
+        if elementName == "EncryptResponse" {
             encryptResult = currentEncryptResult
         }
         

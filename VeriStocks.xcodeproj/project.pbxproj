@@ -302,7 +302,6 @@
 		C94E97121F3A86C6003E2271 /* StocksList */ = {
 			isa = PBXGroup;
 			children = (
-				C94E97151F3A86DD003E2271 /* Manager */,
 				C94E97141F3A86D6003E2271 /* Cell */,
 				C94E97131F3A86CD003E2271 /* Controller */,
 				C989E3AC1F3CCC3D007FA05B /* Arrows.xcassets */,
@@ -325,13 +324,6 @@
 				C9AA04E01F3BC3FE004FA53C /* StockListSectionCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		C94E97151F3A86DD003E2271 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		C9FFC7481F3F682700B15AA6 /* StockDetail */ = {

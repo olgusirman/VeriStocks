@@ -17,6 +17,8 @@ final class EncryptViewController: UIViewController {
     }
     
     fileprivate var isEncryptParsed = false
+    fileprivate let stockPeriods : [StockPeriod] = [ .fiveMinutes, .sixtyMinutes, .day, .week, .month, .noGraphic ]
+    fileprivate var selectedPeriod : StockPeriod?
     
     //MARK: UI
     
@@ -28,8 +30,6 @@ final class EncryptViewController: UIViewController {
         }
     }
     
-    fileprivate let stockPeriods : [StockPeriod] = [ .fiveMinutes, .sixtyMinutes, .day, .week, .month, .noGraphic ]
-    fileprivate var selectedPeriod : StockPeriod?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +50,7 @@ final class EncryptViewController: UIViewController {
     
     private func encryptStatus() {
         
-        let manager = APIManager()
-        
-        /* enrypt changes depends on period
-         if let encrypt = manager.encrypt, !encrypt.isEmpty  {
-         self.isEncryptParsed = true
-         } else {
-         manager.getEncrypt { (encrypt) in
-         if !encrypt.isEmpty {
-         self.isEncryptParsed = true
-         }
-         }
-         }*/
-        
-        manager.getEncrypt { (encrypt) in
+        APIManager().getEncrypt { (encrypt) in
             if !encrypt.isEmpty {
                 self.isEncryptParsed = true
             }
@@ -97,6 +84,7 @@ final class EncryptViewController: UIViewController {
     
 }
 
+//MARK : UIPickerViewDelegate - UIPickerViewDataSource
 extension EncryptViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

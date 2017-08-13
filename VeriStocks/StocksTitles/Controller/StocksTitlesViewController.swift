@@ -74,7 +74,7 @@ final class StocksTitlesViewController: UIViewController {
             
             self.titles.append(contentsOf: stockTitles)
             
-            //reload first section
+            //reload tableView
             let firstIndexSet = IndexSet(integer: 0)
             tableView.reloadSections(firstIndexSet, with: .top)
             
@@ -128,8 +128,7 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
         
         guard let stockResult = self.stockResult else { return }
         
-        //UI
-        ////
+        //After selected row filter objects what type selected
         DispatchQueue.global(qos: .userInteractive).async {
             
             switch selectedStock.type {
@@ -168,8 +167,6 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
                 
             case .IMKB30:
                 
-                //take that imkb30 companies and just list that cmopanies
-                //let imkb30CompanySymbols = stockResult.imkb30.map({ $0.symbol })
                 
                 let responseList = stockResult.responseList.filter({
                     
@@ -196,7 +193,6 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
                     
                     for imkbCompany in stockResult.imkb50 {
                         
-                        //symbols are checked
                         if let symbol = $0.symbol, let imkbCompanySymbol = imkbCompany.symbol, symbol == imkbCompanySymbol {
                             return true
                         }
@@ -233,7 +229,6 @@ extension StocksTitlesViewController : UITableViewDataSource, UITableViewDelegat
             }
             
             DispatchQueue.main.async {
-                //    self.tableView.reloadData()
                 self.performSegue(withIdentifier: Segue.titleList.rawValue, sender: selectedStock)
             }
             

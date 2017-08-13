@@ -43,7 +43,6 @@ struct StocksRequestBody {
         let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? "No device id"
         let deviceType = UIDevice.current.model
         
-        
         var xml = ""
         
         xml += "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:tem=\"http://tempuri.org/\">"
@@ -67,25 +66,6 @@ struct StocksRequestBody {
         xml += "</soapenv:Envelope>"
         
         return xml
-        
-        
-        
-        //For Another service body
-        /*
-         xml += "<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-         xml += "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
-         xml += "<soap:Body>"
-         xml += "<GetForexStocksandIndexesInfo xmlns=\"http://tempuri.org/\">"
-         xml += "<request>"
-         xml += "<RequestedSymbol>\(parameter)</RequestedSymbol>"
-         xml += "<Period>\(period.rawValue)</Period>"
-         xml += "</request>"
-         xml += "</GetForexStocksandIndexesInfo>"
-         xml += "</soap:Body>"
-         xml += "</soap:Envelope>"
-         */
-        
-       
     }
     
     

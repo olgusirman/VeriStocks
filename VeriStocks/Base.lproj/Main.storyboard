@@ -454,7 +454,7 @@
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9R-Kj-U76" customClass="Chart" customModule="SwiftChart">
                                 <rect key="frame" x="16" y="260" width="343" height="391"/>
-                                <color key="backgroundColor" red="0.78694632740000003" green="1" blue="0.98891364400000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

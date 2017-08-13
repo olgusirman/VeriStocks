@@ -8,61 +8,7 @@
 
 import Foundation
 
-/*
- <IMKB100List>
-    <IMKB100>
-    <Symbol>string</Symbol>
-    <Name>string</Name>
-    <Gain>decimal</Gain>
-    <Fund>decimal</Fund>
-    </IMKB100>
-    ...
-    ...
- </IMKB100List>
-
- */
-
-/*
- <IMKB50List>
-    <IMKB50>
-    <Symbol>string</Symbol>
-    <Name>string</Name>
-    <Gain>decimal</Gain>
-    <Fund>decimal</Fund>
-    </IMKB50>
-    ...
-    ...
- </IMKB50List>
-
- */
-
-/*
- <IMKB30List>
-    <IMKB30>
-        <Symbol>string</Symbol>
-        <Name>string</Name>
-        <Gain>decimal</Gain>
-        <Fund>decimal</Fund>
-    </IMKB30>
-    <IMKB30>
-        <Symbol>string</Symbol>
-        <Name>string</Name>
-        <Gain>decimal</Gain>
-        <Fund>decimal</Fund>
-    </IMKB30>
- </IMKB30List>
- */
-
-/*
- <StocknIndexesGraphicInfos>
-     <StockandIndexGraphic>
-         <Price>1.33000</Price>
-         <Date>2012-04- 20T00:00:00</Date>
-     </StockandIndexGraphic>
-                
- */
-
-class StocksResultParser : NSObject {
+final class StocksResultParser : NSObject {
     
     enum FetchType {
         case imkb30
@@ -101,7 +47,7 @@ class StocksResultParser : NSObject {
         xmlParser?.delegate = self
         xmlParser?.parse()
         
-        return StockResult(requestResult: requestResult!, responseList: responseList, imkb30: imkb30, imkb50: imkb50, imkb100: imkb100, graphicList: graphicList)
+        return StockResult(requestResult: requestResult!, responseList: responseList, imkb30: imkb30, imkb50: imkb50, imkb100: imkb100, graphicList: graphicList.reversed())
     }
     
 }
@@ -172,11 +118,10 @@ extension StocksResultParser: XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
         //RequestResult
-        
         if fetchType == .requestResult {
             
             if elementName == "Success" {
-                if let success = Bool(xmlText) { //TODO: check that Bool is not nil? or could not be casted from string?
+                if let success = Bool(xmlText) {
                     requestResult?.success = success
                 }
             }
@@ -184,7 +129,6 @@ extension StocksResultParser: XMLParserDelegate {
             if elementName == "Message" {
                 requestResult?.message = xmlText.trimmingCharacters(in: .whitespacesAndNewlines)
             }
-            
         }
         
         //StockandIndex
@@ -246,7 +190,7 @@ extension StocksResultParser: XMLParserDelegate {
             }
             
             if elementName == "IsIndex" {
-                if let isIndex = Bool(xmlText) { //TODO: check that Bool is not nil?
+                if let isIndex = Bool(xmlText) {
                     currentResponseList?.isIndex = isIndex
                 }
             }

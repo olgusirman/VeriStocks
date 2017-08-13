@@ -10,20 +10,13 @@ import Foundation
 
 final class APIManager {
     
-    //    typealias success = ( ( _ responseObject : ResponseBase) -> Void )
-    //    typealias failure = ( ( _ error : Error?, _ message : String? ) -> Void )
-    
-    //TODO: failure yerine throws kullanabilirsin
-    
     enum Constant : String {
         case baseUrl = "http://mobileexam.veripark.com/mobileforeks/service.asmx"
         case encryptKey
     }
     
     var encrypt : String? {
-        
         get {
-            //TODO: get encrpyt keychain later
             if let encrypt = UserDefaults.standard.object(forKey: Constant.encryptKey.rawValue) as? String {
                 debugPrint("encrypt => \(encrypt)")
                 return encrypt
@@ -33,7 +26,6 @@ final class APIManager {
             
         }
         set {
-            //TODO: get encrpyt keychain later
             UserDefaults.standard.set(newValue, forKey: Constant.encryptKey.rawValue)
             UserDefaults.standard.synchronize()
         }
@@ -45,14 +37,12 @@ final class APIManager {
         return formatter.string(from: Date())
     }()
     
-    //TODO: 1) Encrypt
-    
     func getEncrypt( encryptHandler : @escaping (_ encrypt : String) -> () ) {
         
-        //TODO: handle url correctly
-        //let url = try! URL(string: Constant.baseUrl.rawValue)?.asURL()
-        
-        let url = URL(string: Constant.baseUrl.rawValue)!
+        guard let url = URL(string: Constant.baseUrl.rawValue) else {
+            debugPrint("url error")
+            return
+        }
         var request: URLRequest = URLRequest(url: url)
         
         request.httpMethod = "POST"
@@ -60,7 +50,6 @@ final class APIManager {
         request.addValue("length", forHTTPHeaderField: "Content-Length")
         request.timeoutInterval = 60.0
         
-        //request RequestIsValid29:01:2015 16:31
         let reqBodyParameter = "RequestIsValid\(now)"
         debugPrint(reqBodyParameter)
         
@@ -114,7 +103,10 @@ final class APIManager {
             return
         }
         
-        let url = URL(string: Constant.baseUrl.rawValue)!
+        guard let url = URL(string: Constant.baseUrl.rawValue) else {
+            debugPrint("url error")
+            return
+        }
         var request: URLRequest = URLRequest(url: url)
         
         request.httpMethod = "POST"
@@ -133,7 +125,6 @@ final class APIManager {
                 return
             }
             
-            //Continue if statusCode == 200
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200  else {
                 print("responseCode \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 return
@@ -176,7 +167,11 @@ final class APIManager {
             return
         }
         
-        let url = URL(string: Constant.baseUrl.rawValue)!
+        guard let url = URL(string: Constant.baseUrl.rawValue) else {
+            debugPrint("url error")
+            return
+        }
+        
         var request: URLRequest = URLRequest(url: url)
         
         request.httpMethod = "POST"
@@ -204,13 +199,10 @@ final class APIManager {
             if let data = data {
                 if let xmlResponse: String = String(data: data, encoding: String.Encoding.utf8) {
                     
-                    //debugPrint(xmlResponse)
                     DispatchQueue.global(qos: .userInitiated).async {
                         
                         let stocksResultParser = StocksResultParser(withXML: xmlResponse)
                         let stockResult = stocksResultParser.parse()
-                        
-                        //debugPrint(stockResult)
                         
                         if let success = stockResult.requestResult.success, success {
                             DispatchQueue.main.async {
